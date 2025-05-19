@@ -55,16 +55,61 @@ The dataset contains information about order placement time, pickup time, delive
 
 # 6 . Analysis Plan
 ## 6.1 Data Preparation and Cleaning
-### - Types fixing
+#### - Types fixing
 <img src=info.png>
 <img src=code_TypesFixing.png>
 
-### - Handle missing values through imputation or removal.
+#### - Handle missing values through imputation or removal.
 <img src=info_After_TypesFixing.png>
 <img src=code_HandleMissing.png>
 
-### - Fixing Inconsistencies in Strings
+#### - Fixing Inconsistencies in Strings
 <img src=info_After_HandleMissing.png>
 <img src=code_FixingInconsistenciesInString.png>
 
+## 6.2 Exploratory Data Analysis (EDA)
+### Calculations
+#### - Measures of central tendency
+**Some code to Define a function:**
+def compare_tip_dynamic_dimension(input_dimension):  
+  df_agg_detail = df.groupby(input_dimension).agg(Time_taken_min = ('Time_taken (min)','min'),
+                                    Time_taken_max= ('Time_taken (min)','max'),
+                                    Time_taken_mean = ('Time_taken (min)','mean'),
+                                    Time_taken_median = ('Time_taken (min)','median'),
+                                    Time_taken_mode=('Time_taken (min)', lambda x: x.mode().iloc[0] if not x.mode().empty else None)
+                                    )
+  df_agg_detail = df_agg_detail.T
+  df_agg_detail = df_agg_detail.reset_index()
 
+  df_agg = df.agg(Time_taken_min = ('Time_taken (min)','min'),
+                                    Time_taken_max= ('Time_taken (min)','max'),
+                                    Time_taken_mean = ('Time_taken (min)','mean'),
+                                    Time_taken_median = ('Time_taken (min)','median'),
+                                    Time_taken_mode=('Time_taken (min)', lambda x: x.mode().iloc[0] if not x.mode().empty else None)
+                                    )
+  df_agg.columns = ["all"]
+  df_agg = df_agg.reset_index()
+
+  df_compare = df_agg.merge(df_agg_detail,"inner", on = "index")
+  return df_compare
+
+... and one of results
+
+|level\_0|index|all|0\.0|1\.0|2\.0|3\.0|
+|---|---|---|---|---|---|---|
+|0|Time\_taken\_min|10\.0|10\.0|10\.0|31\.0|42\.0|
+|1|Time\_taken\_max|54\.0|54\.0|54\.0|54\.0|54\.0|
+|2|Time\_taken\_mean|26\.344451662100713|22\.907996717425004|26\.770861923945283|40\.36664544875875|47\.86785714285714|
+|3|Time\_taken\_median|26\.0|22\.0|26\.0|40\.0|48\.0|
+|4|Time\_taken\_mode|26\.0|15\.0|26\.0|39\.0|49\.0|
+
+#### - Histogram
+**Some code to build a Histogram:**
+
+plt.figure(figsize=(20, 7))
+sns.histplot(data=df, x='Time_taken (min)', hue='multiple_deliveries', bins=30, kde=True)
+plt.title('Time Taken Distribution by Multiple_deliveries')
+plt.show()
+
+... and one of results
+<img src=Result_Histogram.png>
