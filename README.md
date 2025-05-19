@@ -150,6 +150,7 @@ plt.show()
 <img src=Result_BoxPlot.png>
 
 ## 6.3 Visualization and Reporting
+<img src=visualize.png>
 
 # 7. Conclusions
 
