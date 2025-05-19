@@ -149,6 +149,34 @@ plt.show()
 ... and one of results
 <img src=Result_BoxPlot.png>
 
+#### - Regression Analysist
+**Some code to build a Regression Analysist:**
+
+df_encoded = pd.get_dummies(df, columns=['Weather_conditions', 'Road_traffic_density', 'Festival', 'Type_of_order', 'City'], drop_first=True)
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_squared_error
+
+X = df_encoded.drop(columns=['Time_taken (min)', 'Delivery_person_ID', 'Order_Date', 'Time_Orderd', 'Time_Order_picked','Vehicle_condition','Type_of_vehicle'])
+y = df_encoded['Time_taken (min)']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print(f"R2 Score: {r2_score(y_test, y_pred):.2f}")
+print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
+
+coef = pd.Series(model.coef_, index=X.columns)
+print(coef.sort_values(ascending=False).head(10))
+
+... and one of results
+
+<img src=Result_Regression.png>
+
 ## 6.3 Visualization and Reporting
 <img src=visualize.png>
 
@@ -172,3 +200,15 @@ plt.show()
 
 ##### Area
 1.   **City:** Semi-Urban have Time - Taken is so high. Need to have a solution to fix.
+
+
+### **👉 Top yếu tố làm tăng thời gian giao hàng (dựa theo hệ số hồi quy):**
+| Biến                          | Hệ số ảnh hưởng | Giải thích                                                                       |
+| ----------------------------- | --------------- | -------------------------------------------------------------------------------- |
+| `Delivery_location_longitude` | **48.46**       | Khoảng cách địa lý xa hơn (toạ độ longitude lớn hơn) → tăng thời gian giao hàng. |
+| `City_Semi-Urban`             | **11.31**       | Giao hàng tại vùng bán đô thị khiến thời gian giao hàng cao hơn đáng kể.         |
+| `Festival_Yes`                | **10.60**       | Giao hàng trong dịp lễ tốn thời gian hơn do tắc nghẽn, thiếu nhân lực.           |
+| `multiple_deliveries`         | **3.14**        | Mỗi lần thêm 1 đơn hàng trong cùng chuyến đi làm tăng thời gian.                 |
+| `Delivery_person_Age`         | **0.38**        | Tuổi lớn hơn liên quan đến tốc độ giao hàng chậm hơn một chút.                   |
+| `Road_traffic_density_Jam`    | **0.26**        | Khi giao hàng trong điều kiện "Jam" (kẹt xe), thời gian tăng lên đáng kể.        |
+
