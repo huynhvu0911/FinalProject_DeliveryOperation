@@ -4,11 +4,11 @@ With the rising demand for online food delivery services, companies like Zomato 
 # 2. Purpose
 The purpose of this project is to evaluate key factors affecting delivery time and customer experience in Zomato’s delivery operations. By applying data analytics and predictive modeling, the project seeks to understand how internal and external variables (e.g., traffic, vehicle condition, delivery personnel rating) influence delivery outcomes. The insights will help inform operational decisions and improve efficiency.
 # 3 . Outcome
-This project will deliver a comprehensive, data-driven evaluation of Zomato's delivery system. Expected outcomes include:
-•	Identification of variables most strongly correlated with delivery delays.
-•	Operational insights into peak time management, multiple deliveries, and delivery staff performance.
-•	Predictive models to estimate delivery times based on environmental and operational factors.
-•	Actionable recommendations to enhance route planning, customer experience, and logistics management.
+This project will provide a comprehensive, data-driven assessment of Zomato's delivery system. Expected outcomes include:
+
+1. Identifying the variables most strongly correlated with delivery delays.
+1. Planning and strategies for peak times, festivals, multiple deliveries, and delivery staff performance.
+1. Recommendations to improve delivery quality, customer experience, and logistics management.
 # 4. Dataset Information
 ### Source: Zomato Delivery Dataset
 https://www.kaggle.com/datasets/saurabhbadole/zomato-delivery-operations-analytics-dataset
@@ -47,3 +47,26 @@ The dataset contains information about order placement time, pickup time, delive
 - Restaurant_latitude/longitude: GPS coordinates of the restaurant
 - Delivery_location_latitude/longitude: GPS coordinates of the customer
 - City: Delivery city
+
+# 5 . Tools & Technologies
+- Python (Pandas, Matplotlib, Seaborn)
+- Jupyter Notebook for analysis scripting
+- Power BI for interactive visualizations and dashboards
+
+# 6 . Analysis Plan
+## 6.1 Data Preparation and Cleaning
+### - Types fixing
+<img src=info.png>
+<img src=code_TypesFixing.png>
+
+### - Handle missing values through imputation or removal.
+<img src=info_After_TypesFixing.png>
+<img src=code_HandleMissing.png>
+
+### - Convert fields into appropriate data types (numeric, categorical, datetime).
+
+
+### - Remove duplicates and outliers, ensure consistent time sequences.
+
+
+### - Normalize or scale relevant numerical variables for modeling purposes.
