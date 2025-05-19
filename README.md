@@ -9,6 +9,7 @@ This project will provide a comprehensive, data-driven assessment of Zomato's de
 1. Identifying the variables most strongly correlated with delivery delays.
 1. Planning and strategies for peak times, festivals, multiple deliveries, and delivery staff performance.
 1. Recommendations to improve delivery quality, customer experience, and logistics management.
+
 # 4. Dataset Information
 ### Source: Zomato Delivery Dataset
 https://www.kaggle.com/datasets/saurabhbadole/zomato-delivery-operations-analytics-dataset
@@ -22,6 +23,7 @@ https://www.kaggle.com/datasets/saurabhbadole/zomato-delivery-operations-analyti
 |4|KNPRES14DEL02|24\.0|4\.7|26\.463504|80\.372929|26\.593504|80\.502929|2022-02-14 00:00:00|1900-01-01 19:50:00|1900-01-01 20:05:00|Fog|Jam|1|Snack|scooter|1\.0|No|Metropolitian|41|
 
 The dataset contains information about order placement time, pickup time, delivery time, weather information, traffic conditions, order type, vehicle status, providing insights into consumer behavior and delivery patterns. The attributes are categorized into five main parts: Delivery staff, vehicles, Order and delivery timing, Weather and traffic conditions, and finally, Area.
+
 ##### 4.1 Delivery staff
 - Delivery_person_ID: Unique identifier of delivery personnel
 - Delivery_person_Age: Age of delivery person
@@ -68,7 +70,6 @@ The dataset contains information about order placement time, pickup time, delive
 <img src=code_FixingInconsistenciesInString.png>
 
 ## 6.2 Exploratory Data Analysis (EDA)
-### Calculations
 #### - Measures of central tendency
 **Some code to Define a function:**
 def compare_tip_dynamic_dimension(input_dimension):  
@@ -111,5 +112,62 @@ sns.histplot(data=df, x='Time_taken (min)', hue='multiple_deliveries', bins=30, 
 plt.title('Time Taken Distribution by Multiple_deliveries')
 plt.show()
 
+
 ... and one of results
 <img src=Result_Histogram.png>
+
+#### - Density Plot
+**Some code to build a Density Plot:**
+
+
+list_col_Density = ['Delivery_person_Age','Delivery_person_Ratings','Time_Orderd']
+
+k = 0
+plt.figure(figsize=(10, 6))
+sns.kdeplot(data=df, x=list_col_Density[k], fill=True, color='skyblue')
+sns.kdeplot(data=df_median_time_taken, x=list_col_Density[k], fill=True, color='red')
+plt.title('Density Plot of ' + list_col_Density[k])
+plt.xlabel(list_col_Density[k])
+plt.grid(True)
+plt.show()
+
+... and one of results
+<img src=Result_DensityPlot.png>
+
+#### - Box Plot
+**Some code to build a Box Plot:**
+
+plt.figure(figsize=(20, 6))
+sns.boxplot(data=df, x='Festival', y='Time_taken (min)', hue='Type_of_order', palette='pastel')
+plt.title('Delivery Time by Festival and Type_of_order')
+plt.xlabel('Festival')
+plt.ylabel('Time Taken (min)')
+plt.legend(title='Type_of_order')
+plt.grid(True)
+plt.show()
+
+... and one of results
+<img src=Result_BoxPlot.png>
+
+## 6.3 Visualization and Reporting
+
+# 7. Conclusions
+
+##### Delivery staff
+1.   **Delivery_person_Age:** Employees aged 28 and under have a faster delivery time rate.
+2.   **Delivery_person_Ratings:** Faster delivery times tend to receive higher ratings.
+
+##### Vehicles
+1.   **Vehicle_condition:** The condition of the vehicle affects the delivery time. A good vehicle condition ensures faster delivery. Regular maintenance plans for the vehicle are necessary.
+2.   **multiple_deliveries:** Multiple deliveries affect the delivery time. It is necessary to calculate and adjust accordingly.
+
+##### Order and Timing
+1.   **Time_Orderd:** The time frame from 5 PM to 10 PM has a longer delivery rate than average. It is necessary to increase personnel during this period.
+2.   **Festival:** Delivery times during the Festival are always higher. There is a need to plan for staffing for the Festival.
+
+##### Weather and traffic conditions
+1.   **Weather_conditions:** Weather conditions affect delivery time, sunny is the best.
+2.   **Road_traffic_density:** Road Traffic affect delivery time. It is necessary to improve the routing application to avoid high traffic density routes.
+
+##### Area
+1.   **City:** Semi-Urban have Time - Taken is so high. Need to have a solution to fix.
