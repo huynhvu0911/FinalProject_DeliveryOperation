@@ -63,10 +63,8 @@ The dataset contains information about order placement time, pickup time, delive
 <img src=info_After_TypesFixing.png>
 <img src=code_HandleMissing.png>
 
-### - Convert fields into appropriate data types (numeric, categorical, datetime).
+### - Fixing Inconsistencies in Strings
+<img src=info_After_HandleMissing.png>
+<img src=code_FixingInconsistenciesInString.png>
 
 
-### - Remove duplicates and outliers, ensure consistent time sequences.
-
-
-### - Normalize or scale relevant numerical variables for modeling purposes.
