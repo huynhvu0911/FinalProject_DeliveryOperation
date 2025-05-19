@@ -13,4 +13,4 @@ This project will deliver a comprehensive, data-driven evaluation of Zomato's de
 ##### Source: Zomato Delivery Dataset
 https://www.kaggle.com/datasets/saurabhbadole/zomato-delivery-operations-analytics-dataset
 ##### Data Structure and Key Features:
-<img src=Dataset_Infomation.png>
+
