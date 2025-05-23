@@ -1,6 +1,6 @@
 # 1. Introduction
 With the rising demand for online food delivery services, companies like Zomato face increasing pressure to optimize logistics while maintaining high service standards. This project analyzes Zomato's delivery dataset, which contains detailed operational data including delivery timings, road and weather conditions, and performance metrics. The goal is to uncover operational inefficiencies, enhance route planning, and improve overall delivery performance through data analysis and machine learning.
-<img src=zomato.png>
+<img src=Image/zomato.png>
 # 2. Purpose
 The purpose of this project is to evaluate key factors affecting delivery time and customer experience in Zomato’s delivery operations. By applying data analytics and predictive modeling, the project seeks to understand how internal and external variables (e.g., traffic, vehicle condition, delivery personnel rating) influence delivery outcomes. The insights will help inform operational decisions and improve efficiency.
 # 3 . Outcome
@@ -58,16 +58,16 @@ The dataset contains information about order placement time, pickup time, delive
 # 6 . Analysis Plan
 ## 6.1 Data Preparation and Cleaning
 #### - Types fixing
-<img src=info.png>
-<img src=code_TypesFixing.png>
+<img src=Image/info.png>
+<img src=Image/code_TypesFixing.png>
 
 #### - Handle missing values through imputation or removal.
-<img src=info_After_TypesFixing.png>
-<img src=code_HandleMissing.png>
+<img src=Image/info_After_TypesFixing.png>
+<img src=Image/code_HandleMissing.png>
 
 #### - Fixing Inconsistencies in Strings
-<img src=info_After_HandleMissing.png>
-<img src=code_FixingInconsistenciesInString.png>
+<img src=Image/info_After_HandleMissing.png>
+<img src=Image/code_FixingInconsistenciesInString.png>
 
 ## 6.2 Exploratory Data Analysis (EDA)
 #### - Measures of central tendency
@@ -114,7 +114,7 @@ plt.show()
 
 
 ... and one of results
-<img src=Result_Histogram.png>
+<img src=Image/Result_Histogram.png>
 
 #### - Density Plot
 **Some code to build a Density Plot:**
@@ -132,7 +132,7 @@ plt.grid(True)
 plt.show()
 
 ... and one of results
-<img src=Result_DensityPlot.png>
+<img src=Image/Result_DensityPlot.png>
 
 #### - Box Plot
 **Some code to build a Box Plot:**
@@ -147,7 +147,7 @@ plt.grid(True)
 plt.show()
 
 ... and one of results
-<img src=Result_BoxPlot.png>
+<img src=Image/Result_BoxPlot.png>
 
 #### - Regression Analysist
 **Some code to build a Regression Analysist:**
@@ -175,10 +175,10 @@ print(coef.sort_values(ascending=False).head(10))
 
 ... and one of results
 
-<img src=Result_Regression.png>
+<img src=Image/Result_Regression.png>
 
 ## 6.3 Visualization and Reporting
-<img src=visualize.png>
+<img src=Image/visualize.png>
 
 # 7. Conclusions
 
