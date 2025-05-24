@@ -141,47 +141,18 @@ The dataset contains information about order placement time, pickup time, delive
 <img src=Image/Time_Orderd.png>
 
 #### - Box Plot
-**Some code to build a Box Plot:**
+**Delivery Time by Festival and Type_of_order**
 
-plt.figure(figsize=(20, 6))
-sns.boxplot(data=df, x='Festival', y='Time_taken (min)', hue='Type_of_order', palette='pastel')
-plt.title('Delivery Time by Festival and Type_of_order')
-plt.xlabel('Festival')
-plt.ylabel('Time Taken (min)')
-plt.legend(title='Type_of_order')
-plt.grid(True)
-plt.show()
-
-... and one of results
-<img src=Image/Result_BoxPlot.png>
+<img src=Image/Delivery_Time_by_Festival_and_Type_of_order.png>
 
 #### - Regression Analysist
-**Some code to build a Regression Analysist:**
+*   R² Score = 0.57 → The model explains 57% of the variance in the delivery time (Time_taken (min)) based on the input variables. This is a relatively acceptable level given the noisy nature of real-world delivery data.
 
-df_encoded = pd.get_dummies(df, columns=['Weather_conditions', 'Road_traffic_density', 'Festival', 'Type_of_order', 'City'], drop_first=True)
+*   MSE = 88.44 → The Mean Squared Error (MSE) represents the average squared difference between the predicted and actual values, indicating the prediction error of the model.
 
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score, mean_squared_error
+**COEF**
 
-X = df_encoded.drop(columns=['Time_taken (min)', 'Delivery_person_ID', 'Order_Date', 'Time_Orderd', 'Time_Order_picked','Vehicle_condition','Type_of_vehicle'])
-y = df_encoded['Time_taken (min)']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-y_pred = model.predict(X_test)
-print(f"R2 Score: {r2_score(y_test, y_pred):.2f}")
-print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
-
-coef = pd.Series(model.coef_, index=X.columns)
-print(coef.sort_values(ascending=False).head(10))
-
-... and one of results
-
-<img src=Image/Result_Regression.png>
+<img src=Image/COEF.png>
 
 ## 6.3 Visualization and Reporting
 <img src=Image/visualize.png>
