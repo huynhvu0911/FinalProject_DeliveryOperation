@@ -105,7 +105,7 @@ The dataset contains information about order placement time, pickup time, delive
 **Some code to build a Histogram:**
 **Time Taken Distribution by Vehicle_condition**
 
-<img src=Image/Time Taken Distribution by Vehicle_condition.png>
+<img src=Image/Time_Taken_Distribution_by_Vehicle_condition.png>
 
 #### - Density Plot
 **Some code to build a Density Plot:**
