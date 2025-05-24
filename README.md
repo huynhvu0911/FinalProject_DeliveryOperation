@@ -3,7 +3,7 @@
 2. [Purpose](#2-purpose)
 3. [Outcome](#3-outcome)
 4. [Dataset Information](#4-dataset-information)
-5. [Tools & Technologies](#5-tools&technologies)
+5. [Tools & Technologies](#5-tools-technologies)
 6. [Analysis Plan](#6-analysis-plan)
    - [Data Preparation and Cleaning](#61-data-preparation-and-cleaning)
    - [Exploratory Data Analysis (EDA)](#62-exploratory-data-analysis-eda)
@@ -64,7 +64,7 @@ The dataset contains information about order placement time, pickup time, delive
 - Delivery_location_latitude/longitude: GPS coordinates of the customer
 - City: Delivery city
 
-# 5. Tools & Technologies
+# 5. Tools - Technologies
 - Python (Pandas, Matplotlib, Seaborn)
 - Jupyter Notebook for analysis scripting
 - Power BI for interactive visualizations and dashboards
