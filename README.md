@@ -102,28 +102,43 @@ The dataset contains information about order placement time, pickup time, delive
 |4|Time\_taken\_mode|26\.0|15\.0|15\.0|19\.0|28\.0|28\.0|26\.0|27\.0|26\.0|26\.0|26\.0|25\.0|27\.0|29\.0|26\.0|19\.0|24\.0|
 
 #### - Histogram
-**Some code to build a Histogram:**
+
 **Time Taken Distribution by Vehicle_condition**
 
 <img src=Image/Time_Taken_Distribution_by_Vehicle_condition.png>
 
+**Time Taken Distribution by Type of vehicle**
+
+<img src=Image/Time_Taken_Distribution_by_Type_of_vehicle.png>
+
+**Time Taken Distribution by Multiple_deliveries**
+
+<img src=Image/Time_Taken_Distribution_by_Multiple_deliveries.png>
+
+**Time Taken Distribution by Road traffic**
+
+<img src=Image/Time_Taken_Distribution_by_Road_traffic.png>
+
+**Time Taken Distribution by Weather conditions**
+
+<img src=Image/Time_Taken_Distribution_by_Weather_conditions.png>
+
+**Time Taken Distribution by City**
+
+<img src=Image/Time_Taken_Distribution_by_City.png>
+
 #### - Density Plot
-**Some code to build a Density Plot:**
+**Density Plot of Delivery_person_Age**
 
+<img src=Image/Delivery_Person_Age.png>
 
-list_col_Density = ['Delivery_person_Age','Delivery_person_Ratings','Time_Orderd']
+**Density Plot of Delivery_person_Ratings**
 
-k = 0
-plt.figure(figsize=(10, 6))
-sns.kdeplot(data=df, x=list_col_Density[k], fill=True, color='skyblue')
-sns.kdeplot(data=df_median_time_taken, x=list_col_Density[k], fill=True, color='red')
-plt.title('Density Plot of ' + list_col_Density[k])
-plt.xlabel(list_col_Density[k])
-plt.grid(True)
-plt.show()
+<img src=Image/Delivery_person_Ratings.png>
 
-... and one of results
-<img src=Image/Result_DensityPlot.png>
+**Density Plot of Time_Orderd**
+
+<img src=Image/Time_Orderd.png>
 
 #### - Box Plot
 **Some code to build a Box Plot:**
