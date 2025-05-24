@@ -58,44 +58,32 @@ The dataset contains information about order placement time, pickup time, delive
 # 6 . Analysis Plan
 ## 6.1 Data Preparation and Cleaning
 #### - Types fixing
-<img src=Image/info.png>
-<img src=Image/code_TypesFixing.png>
+- **'Delivery_person_ID','Weather_conditions','Vehicle_condition','Road_traffic_density','Type_of_vehicle','Type_of_order','Festival','City':** convert to string
+- **'Time_Orderd', 'Time_Order_picked':** convert to Datetime
 
 #### - Handle missing values through imputation or removal.
-<img src=Image/info_After_TypesFixing.png>
-<img src=Image/code_HandleMissing.png>
-
+- **'Delivery_person_Ratings','Delivery_person_Age','multiple_deliveries':** replace with median value
+- **'Weather_conditions','Road_traffic_density','City','Festival':** replace with Mode value
+  
 #### - Fixing Inconsistencies in Strings
-<img src=Image/info_After_HandleMissing.png>
-<img src=Image/code_FixingInconsistenciesInString.png>
+- **'Weather_conditions','Vehicle_condition','Road_traffic_density','Type_of_vehicle','Type_of_order','Festival','City':** set to lower and then convert to Category
+
+#### - Handling outliers (IQR)
+- No data is outlier
 
 ## 6.2 Exploratory Data Analysis (EDA)
 #### - Measures of central tendency
-**Some code to Define a function:**
-def compare_tip_dynamic_dimension(input_dimension):  
-  df_agg_detail = df.groupby(input_dimension).agg(Time_taken_min = ('Time_taken (min)','min'),
-                                    Time_taken_max= ('Time_taken (min)','max'),
-                                    Time_taken_mean = ('Time_taken (min)','mean'),
-                                    Time_taken_median = ('Time_taken (min)','median'),
-                                    Time_taken_mode=('Time_taken (min)', lambda x: x.mode().iloc[0] if not x.mode().empty else None)
-                                    )
-  df_agg_detail = df_agg_detail.T
-  df_agg_detail = df_agg_detail.reset_index()
 
-  df_agg = df.agg(Time_taken_min = ('Time_taken (min)','min'),
-                                    Time_taken_max= ('Time_taken (min)','max'),
-                                    Time_taken_mean = ('Time_taken (min)','mean'),
-                                    Time_taken_median = ('Time_taken (min)','median'),
-                                    Time_taken_mode=('Time_taken (min)', lambda x: x.mode().iloc[0] if not x.mode().empty else None)
-                                    )
-  df_agg.columns = ["all"]
-  df_agg = df_agg.reset_index()
+**Delivery_person_Age:**
+|level\_0|index|all|20\.0|21\.0|22\.0|23\.0|24\.0|25\.0|26\.0|27\.0|28\.0|29\.0|30\.0|31\.0|32\.0|33\.0|34\.0|35\.0|36\.0|37\.0|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|Time\_taken\_min|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|
+|1|Time\_taken\_max|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|53\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|54\.0|
+|2|Time\_taken\_mean|26\.344451662100713|23\.031884057971016|22\.898078043098426|23\.00670016750419|23\.049939831528278|23\.061651583710407|22\.798723897911835|22\.828701077708452|23\.06812933025404|23\.198403648802735|23\.028264556246466|29\.057956278596848|30\.0|29\.945930563460443|29\.397831050228312|29\.648085585585587|29\.743956043956043|29\.44068706387547|29\.297312122874384|
+|3|Time\_taken\_median|26\.0|22\.0|22\.0|22\.0|22\.0|22\.0|22\.0|22\.0|22\.0|22\.0|22\.0|28\.0|29\.0|29\.0|28\.0|29\.0|29\.0|29\.0|28\.0|
+|4|Time\_taken\_mode|26\.0|16\.0|19\.0|15\.0|15\.0|15\.0|16\.0|18\.0|18\.0|15\.0|17\.0|25\.0|25\.0|28\.0|25\.0|25\.0|26\.0|25\.0|27\.0|
 
-  df_compare = df_agg.merge(df_agg_detail,"inner", on = "index")
-  return df_compare
-
-... and one of results
-
+**Multiple_deliveries:**
 |level\_0|index|all|0\.0|1\.0|2\.0|3\.0|
 |---|---|---|---|---|---|---|
 |0|Time\_taken\_min|10\.0|10\.0|10\.0|31\.0|42\.0|
@@ -104,17 +92,20 @@ def compare_tip_dynamic_dimension(input_dimension):
 |3|Time\_taken\_median|26\.0|22\.0|26\.0|40\.0|48\.0|
 |4|Time\_taken\_mode|26\.0|15\.0|26\.0|39\.0|49\.0|
 
+**Time_Orderd**
+|level\_0|index|all|08:00 - 08:59|09:00 - 09:59|10:00 - 10:59|11:00 - 11:59|12:00 - 12:59|13:00 - 13:59|14:00 - 14:59|15:00 - 15:59|16:00 - 16:59|17:00 - 17:59|18:00 - 18:59|19:00 - 19:59|20:00 - 20:59|21:00 - 21:59|22:00 - 22:59|23:00 - 23:59|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|Time\_taken\_min|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|10\.0|
+|1|Time\_taken\_max|54\.0|34\.0|34\.0|34\.0|53\.0|53\.0|54\.0|54\.0|39\.0|39\.0|49\.0|49\.0|54\.0|54\.0|54\.0|44\.0|44\.0|
+|2|Time\_taken\_mean|26\.293962793962795|19\.58062740781508|19\.521468926553673|19\.480898876404495|27\.165158371040725|26\.77524893314367|27\.451704545454547|27\.543933054393307|22\.880559085133417|23\.01219512195122|27\.477558774637853|27\.28991905813098|31\.17630127128808|31\.178527757397898|31\.126286248830684|22\.416826462128476|22\.435314257764734|
+|3|Time\_taken\_median|26\.0|19\.0|19\.0|19\.0|27\.0|27\.0|27\.0|27\.0|23\.0|24\.0|27\.0|27\.0|31\.0|31\.0|31\.0|22\.0|22\.0|
+|4|Time\_taken\_mode|26\.0|15\.0|15\.0|19\.0|28\.0|28\.0|26\.0|27\.0|26\.0|26\.0|26\.0|25\.0|27\.0|29\.0|26\.0|19\.0|24\.0|
+
 #### - Histogram
 **Some code to build a Histogram:**
+**Time Taken Distribution by Vehicle_condition**
 
-plt.figure(figsize=(20, 7))
-sns.histplot(data=df, x='Time_taken (min)', hue='multiple_deliveries', bins=30, kde=True)
-plt.title('Time Taken Distribution by Multiple_deliveries')
-plt.show()
-
-
-... and one of results
-<img src=Image/Result_Histogram.png>
+<img src=Image/Time Taken Distribution by Vehicle_condition.png>
 
 #### - Density Plot
 **Some code to build a Density Plot:**
