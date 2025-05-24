@@ -1,9 +1,23 @@
+# Table of Contents
+1. [Introduction](#1-introduction)
+2. [Purpose](#2-purpose)
+3. [Outcome](#3-outcome)
+4. [Dataset Information](#4-dataset-information)
+5. [Tools & Technologies](#5-tools--technologies)
+6. [Analysis Plan](#6-analysis-plan)
+   - [Data Preparation and Cleaning](#61-data-preparation-and-cleaning)
+   - [Exploratory Data Analysis (EDA)](#62-exploratory-data-analysis-eda)
+   - [Visualization and Reporting](#63-visualization-and-reporting)
+7. [Conclusions](#7-conclusions)
+8. [Recommendations (Detailed and Actionable)](#8-recommendations-detailed-and-actionable)
+9. [Comparison with Objectives](#9-comparison-with-objectives)
+
 # 1. Introduction
 With the rising demand for online food delivery services, companies like Zomato face increasing pressure to optimize logistics while maintaining high service standards. This project analyzes Zomato's delivery dataset, which contains detailed operational data including delivery timings, road and weather conditions, and performance metrics. The goal is to uncover operational inefficiencies, enhance route planning, and improve overall delivery performance through data analysis and machine learning.
 <img src=Image/zomato.png>
 # 2. Purpose
 The purpose of this project is to evaluate key factors affecting delivery time and customer experience in Zomato’s delivery operations. By applying data analytics and predictive modeling, the project seeks to understand how internal and external variables (e.g., traffic, vehicle condition, delivery personnel rating) influence delivery outcomes. The insights will help inform operational decisions and improve efficiency.
-# 3 . Outcome
+# 3. Outcome
 This project will provide a comprehensive, data-driven assessment of Zomato's delivery system. Expected outcomes include:
 
 1. Identifying the variables most strongly correlated with delivery delays.
@@ -189,3 +203,92 @@ The dataset contains information about order placement time, pickup time, delive
 | `Delivery_person_Age`         | **0.38**        | Tuổi lớn hơn liên quan đến tốc độ giao hàng chậm hơn một chút.                   |
 | `Road_traffic_density_Jam`    | **0.26**        | Khi giao hàng trong điều kiện "Jam" (kẹt xe), thời gian tăng lên đáng kể.        |
 
+# 8. Recommendations (Detailed and Actionable)
+Based on the data analysis and insights obtained, the following are specific recommendations to improve Zomato’s delivery performance:
+
+1️⃣ Optimize Workforce and Shift Allocation
+Peak Hours (5 PM – 10 PM): Increase delivery personnel by at least 20–30% to mitigate delays during this time frame.
+
+Staff Allocation by Region: Deploy more resources to Semi-Urban areas to improve delivery speed, as these regions show longer delivery times.
+
+2️⃣ Enhance Vehicle Quality
+Implement mandatory regular maintenance for all delivery vehicles, particularly those with poor condition scores (0 or 1).
+
+Introduce incentive policies for drivers to use newer or better-maintained vehicles, boosting overall delivery performance.
+
+3️⃣ Optimize Routes and Smart Navigation
+Deploy real-time routing systems, integrating traffic and weather data to avoid congested or adverse areas (e.g., high traffic density or bad weather).
+
+Train delivery personnel on identified fast routes based on data analysis.
+
+4️⃣ Strategize Multiple Deliveries
+Limit the number of orders per trip when route optimization is not feasible.
+
+Use smart order allocation algorithms to minimize average delivery time for multiple orders.
+
+5️⃣ Optimize by Order Type and Weather
+Prioritize delivery of snacks or beverages during morning and midday slots, when delivery times are generally lower.
+
+Monitor weather conditions to adjust staffing and routing strategies, especially during festival days.
+
+6️⃣ Enhance Staff Skills and Recruitment
+Prioritize recruiting younger delivery personnel (under 28 years old) or conduct training programs focused on improving delivery speed for older staff.
+
+Introduce performance-based incentives tied to high customer ratings.
+
+7️⃣ Continuous Monitoring and Evaluation
+Implement Power BI dashboards to track delivery times by hour, region, and order type.
+
+Establish clear KPIs (e.g., reduce average delivery time by 15% during peak hours).
+
+9. Comparison with Objectives
+This project was initiated with three primary objectives, aiming to analyze Zomato’s delivery operations, uncover key inefficiencies, and propose actionable improvements. The comparison between these initial objectives and the final outcomes is as follows:
+
+✅ Objective 1: Identify variables most strongly correlated with delivery delays
+Achieved.
+Through regression analysis, the project identified the most influential factors impacting delivery times:
+
+Delivery_location_longitude: Long geographical distances increase delivery time.
+
+City_Semi-Urban: Deliveries in semi-urban areas experience significant delays.
+
+Festival_Yes: Festivals result in longer delivery times due to congestion and reduced staff.
+
+Multiple_deliveries: Adding more orders per trip increases delivery time.
+
+Delivery_person_Age: Older delivery personnel tend to deliver slightly slower.
+
+Road_traffic_density_Jam: Congested traffic conditions substantially increase delivery time.
+
+✅ Objective 2: Develop planning and strategies for peak times, festivals, multiple deliveries, and delivery staff performance
+Partially Achieved.
+The project provided general strategic recommendations, including:
+
+Increasing staff during peak hours (5 PM – 10 PM).
+
+Enhancing delivery vehicle maintenance and incentives for vehicle quality.
+
+Utilizing real-time routing systems to avoid congested routes and weather disruptions.
+
+Developing smarter allocation for multiple deliveries.
+However, the plan can be improved by adding:
+
+Quantitative targets (e.g., number of additional staff or delivery reduction goals).
+
+Specific routing optimization (e.g., preferred routes, high-traffic areas to avoid).
+
+✅ Objective 3: Recommend actions to improve delivery quality, customer experience, and logistics management
+Fully Achieved.
+The project delivered detailed and actionable recommendations:
+
+Staff skill development, targeted recruitment, and performance-based incentives.
+
+Use of Power BI dashboards to monitor key metrics.
+
+Implementation of real-time traffic and weather data for smarter routing.
+
+Prioritization of efficient delivery types (snacks, beverages) during optimal times.
+
+📈 Summary
+The project has successfully met its main objectives, with comprehensive analysis and well-defined insights.
+To further enhance effectiveness, detailed KPIs, precise staffing levels, and route maps can be integrated into the recommendations for full operational implementation.
