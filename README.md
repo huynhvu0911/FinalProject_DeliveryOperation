@@ -161,97 +161,135 @@ The dataset contains information about order placement time, pickup time, delive
 
 **>>>> Insight:** Semi-Urban have Time - Taken is so high.
 
-### - Regression Analysist
-*   R² Score = 0.57 → The model explains 57% of the variance in the delivery time (Time_taken (min)) based on the input variables. This is a relatively acceptable level given the noisy nature of real-world delivery data.
+## 6.3 Visualization and Reporting
+<img src=Image/visualize.png>
 
-*   MSE = 88.44 → The Mean Squared Error (MSE) represents the average squared difference between the predicted and actual values, indicating the prediction error of the model.
+## 6.4 Regression Analysist
+R² Score = 0.57 → The model explains 57% of the variance in the dependent variable (delivery time). This is a relatively good level, indicating that the model has captured a large portion of the data trend, but still leaves 43% of the variance unexplained. This could be due to:
+
+✔️ Not incorporating all important input variables (e.g., detailed distance, type of goods).
+
+✔️ Potential non-linear relationships between the variables and delivery time, suggesting that more advanced models may be needed.
+
+MSE = 38.44 → The mean squared error of the prediction is relatively low, showing that the model predicts delivery time fairly closely to actual data, and better than previous trials (e.g., MSE = 88.44, 39.84).
+
+📌 Summary: The current Linear Regression model provides a reasonably accurate prediction (R² = 57%), with a relatively low MSE (38.44).
+
+
 
 **COEF**
 
 <img src=Image/COEF.png>
 
 **>>>> Insight:** ### **👉 Top factors that increase delivery time (based on regression coefficients):**
-| Variable                          | Influence coefficient | Explain                                                                       |
-| ----------------------------- | --------------- | -------------------------------------------------------------------------------- |
-| `Delivery_location_longitude` | **48.46**       | A greater geographical distance (larger longitude coordinates) → increases delivery time. |
-| `City_Semi-Urban`             | **11.31**       | Delivery in suburban areas results in significantly higher delivery times.         |
-| `Festival_Yes`                | **10.60**       | Delivery during the holidays takes more time due to congestion and a lack of manpower.          |
-| `multiple_deliveries`         | **3.14**        | Each time an additional order is added during the same trip, it increases the time.              |
-| `Delivery_person_Age`         | **0.38**        | Older age is associated with slightly slower delivery speeds.                  |
-| `Road_traffic_density_Jam`    | **0.26**        | When delivering in 'Jam' conditions (traffic jam), the time increases significantly.       |
 
-## 6.3 Visualization and Reporting
-<img src=Image/visualize.png>
+Delivery_location_longitude (48.78): The longitude coordinate has a strong and positive effect on delivery time – meaning that as the delivery location’s longitude increases, the delivery time also increases significantly. This may reflect the additional time needed to reach farther delivery points along the longitude direction.
+
+City_Semi-Urban (12.44): Deliveries in semi-urban areas significantly increase delivery time compared to other regions.
+
+Festival_Yes (10.49): During festivals, delivery time increases by approximately 10.5 minutes on average – due to higher traffic volumes and increased demand.
+
+Multiple_deliveries (3.18): Each instance of multiple deliveries in a single trip increases delivery time by approximately 3.2 minutes, reflecting the additional handling and routing involved.
+
+Road_traffic_density_Jam (0.40): Traffic jams increase delivery time by approximately 0.4 minutes – a minor but notable impact.
+
+Delivery_person_Age (0.38): Older delivery personnel tend to take longer to deliver, though the effect is relatively small.
+
+Weather_conditions_Fog (0.19): Foggy conditions slightly increase delivery time – the impact is smaller compared to festivals or semi-urban areas.
+
+Restaurant_latitude (0.01): The latitude coordinate of the restaurant has a small effect on delivery time.
+
+Delivery_location_latitude (-0.026): Conversely, the latitude of the delivery location slightly reduces delivery time, but the effect is very small.
+
+Type_of_order_Meal (-0.14): Meal orders tend to slightly reduce delivery time – likely because meal orders are simpler and quicker to handle.
 
 # 7. Conclusions
 
-### Delivery staff
-1.   **Delivery_person_Age:** Employees aged 28 and under have a faster delivery time rate.
-2.   **Delivery_person_Ratings:** Faster delivery times tend to receive higher ratings.
+🔴 1. Area
 
-### Vehicles
-1.   **Vehicle_condition:** The condition of the vehicle affects the delivery time. A good vehicle condition ensures faster delivery. 
-2.   **multiple_deliveries:** Multiple deliveries affect the delivery time. 
+Delivery time in semi-urban areas is significantly higher than in other regions.
 
-### Order and Timing
-1.   **Time_Orderd:** The time frame from 5 PM to 10 PM has a longer delivery rate than average. 
-2.   **Festival:** Delivery times during the Festival are always higher. 
+This may be due to more complex infrastructure or less optimized delivery routes.
 
-### Weather and traffic conditions
-1.   **Weather_conditions:** Weather conditions affect delivery time, sunny is the best.
-2.   **Road_traffic_density:** Road Traffic affect delivery time. 
+🧑‍🔧 2. Staff
 
-### Area
-1.   **City:** Semi-Urban have Time - Taken is so high. 
+Younger delivery personnel (under 29) tend to have faster delivery times.
 
+Higher customer ratings are associated with quicker deliveries.
 
-### **👉 Top factors that increase delivery time (based on regression coefficients):**
-| Variable                          | Influence coefficient | Explain                                                                       |
-| ----------------------------- | --------------- | -------------------------------------------------------------------------------- |
-| `Delivery_location_longitude` | **48.46**       | A greater geographical distance (larger longitude coordinates) → increases delivery time. |
-| `City_Semi-Urban`             | **11.31**       | Delivery in suburban areas results in significantly higher delivery times.         |
-| `Festival_Yes`                | **10.60**       | Delivery during the holidays takes more time due to congestion and a lack of manpower.          |
-| `multiple_deliveries`         | **3.14**        | Each time an additional order is added during the same trip, it increases the time.              |
-| `Delivery_person_Age`         | **0.38**        | Older age is associated with slightly slower delivery speeds.                  |
-| `Road_traffic_density_Jam`    | **0.26**        | When delivering in 'Jam' conditions (traffic jam), the time increases significantly.       |
+Older delivery personnel generally take longer to complete deliveries.
+
+🚚 3. Vehicles
+
+Good vehicle condition contributes to reduced delivery times.
+
+Poor vehicle condition can increase delivery time.
+
+⏰ 4. Order Timing
+
+Multiple deliveries in one trip increase average delivery time.
+
+Peak hours (5 PM – 10 PM) and festival periods are associated with higher delivery times due to increased demand and traffic.
+
+🌦️ 5. Weather & Traffic
+
+Good weather (sunny) leads to shorter delivery times, while foggy conditions can extend delivery duration.
+
+Traffic jams slightly increase delivery times but are noteworthy.
+
+📈 6. Predictive Model
+
+The Linear Regression model explains 57% of the variance (R² Score = 0.57) in delivery time – an acceptable level.
+
+Mean Squared Error (MSE) = 38.44, indicating fairly accurate predictions compared to actual data.
+
+Key factors influencing delivery time:
+
+✔️ Delivery_location_longitude (farther longitude points increase time)
+
+✔️ City_Semi-Urban (semi-urban areas)
+
+✔️ Festival (during festivals)
+
+✔️ multiple_deliveries (multiple orders per trip)
 
 # 8. Recommendations (Detailed and Actionable)
 Based on the data analysis and insights obtained, the following are specific recommendations to improve Zomato’s delivery performance:
 
-### Delivery staff
-1.   **Delivery_person_Age:**
-      Prioritize recruiting younger delivery personnel (under 28 years old) or conduct training programs focused on improving delivery speed for older staff.
-2.   **Delivery_person_Ratings:** 
-      Introduce performance-based incentives tied to high customer ratings.
+📈 Staff & Training
+Prioritize recruiting younger delivery personnel (under 28) or provide targeted training for older staff to improve delivery speed.
 
-### Vehicles
-1.   **Vehicle_condition:**
-      Implement mandatory regular maintenance for all delivery vehicles, particularly those with poor condition scores (0 or 1).
-      Introduce incentive policies for drivers to use newer or better-maintained vehicles, boosting overall delivery performance.
-2.   **multiple_deliveries:**
-      Limit the number of orders per trip when route optimization is not feasible.
-      Use smart order allocation algorithms to minimize average delivery time for multiple orders.
+Implement performance-based incentives tied to high customer ratings.
 
-### Order and Timing
-1.   **Time_Orderd:**
-      Peak Hours (5 PM – 10 PM): Increase delivery personnel by at least 20–30% to mitigate delays during this time frame.
-      Prioritize delivery of snacks or beverages during morning and midday slots, when delivery times are generally lower.
-2.   **Festival:**
-      There is a need to plan for staffing for the Festival.
+🚚 Vehicles & Maintenance
+Enforce regular maintenance for all vehicles, especially those with poor condition scores.
 
-### Weather and traffic conditions
-1.   **Weather_conditions:**
-      Monitor weather conditions to adjust staffing and routing strategies, especially during festival days.
-2.   **Road_traffic_density:**
-      Deploy real-time routing systems, integrating traffic and weather data to avoid congested or adverse areas (e.g., high traffic density or bad weather).
-      Train delivery personnel on identified fast routes based on data analysis.
+Offer incentives for drivers to use newer or well-maintained vehicles.
 
-### Area
-1.   **City:**
-      Semi-Urban have Time - Taken is so high. Deploy more resources to Semi-Urban areas to improve delivery speed, as these regions show longer delivery times.
+📦 Order Management
+Limit the number of multiple deliveries per trip to avoid delays.
 
-### Continuous Monitoring and Evaluation
-      Implement Power BI dashboards to track delivery times by hour, region, and order type.
+Use smart order allocation algorithms to optimize routing and minimize delivery time.
 
-      Establish clear KPIs (e.g., reduce average delivery time by 15% during peak hours).
+⏰ Order Timing & Demand Management
+Increase delivery staff by 20–30% during peak hours (5–10 PM) and festivals.
+
+Prioritize fast delivery of smaller items (snacks, beverages) during off-peak hours.
+
+🌦️ Weather & Traffic Management
+Monitor real-time traffic and weather conditions, especially during festivals.
+
+Adjust staffing and routing strategies dynamically based on data.
+
+Train drivers on efficient routes identified from data analysis.
+
+🌍 Area-specific Strategies
+Allocate more resources to semi-urban areas where delivery times are consistently longer.
+
+Develop area-specific optimization plans, including route planning and resource allocation.
+
+🗺️ Geolocation-based Improvements
+Consider the strong impact of delivery_location_longitude on delivery times.
+
+Use dynamic geolocation-based planning to minimize time increases for farther destinations.
 
